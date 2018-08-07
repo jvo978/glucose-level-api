@@ -1,4 +1,3 @@
 class DoctorSerializer < ActiveModel::Serializer
-  has_one :user
-  attributes :id, :name, :specialty, :hospital, :location
+  attributes :id, :name, :specialty, :hospital, :location, :user_id
 end

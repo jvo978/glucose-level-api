@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class DoctorsController < OpenReadController
-  before_action :set_doctor, only: [:show, :update, :destroy]
+  before_action :set_doctor, only: %i[show update destroy]
 
   # GET /doctors
   def index
-    @doctors = Doctor.all
+    @doctors = Doctor.where(user_id: current_user.id)
 
     render json: @doctors
   end
@@ -26,7 +28,6 @@ class DoctorsController < OpenReadController
 
   # PATCH/PUT /doctors/1
   def update
-
     if @doctor.update(doctor_params)
       render json: @doctor
     else
@@ -36,17 +37,23 @@ class DoctorsController < OpenReadController
 
   # DELETE /doctors/1
   def destroy
+    @doctor = Doctor.find(params[:id])
     @doctor.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_doctor
-      @doctor = current_user.doctors.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def doctor_params
-      params.require(:doctor).permit(:name, :specialty, :hospital, :location, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_doctor
+    @doctor = current_user.doctors.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def doctor_params
+    params.require(:doctor).permit(:name,
+                                   :specialty,
+                                   :hospital,
+                                   :location,
+                                   :user_id)
+  end
 end

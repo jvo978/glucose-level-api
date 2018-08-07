@@ -1,4 +1,4 @@
 class Doctor < ApplicationRecord
   belongs_to :user
-  validates :user, presence: true
+  validates :name, :specialty, :hospital, :location, :user_id, presence: true
 end
