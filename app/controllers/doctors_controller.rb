@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class DoctorsController < OpenReadController
-  before_action :set_doctor, only: %i[show update destroy]
+  before_action :set_doctor, only: %i[update destroy]
 
   # GET /doctors
   def index
-    @doctors = Doctor.where(user_id: current_user.id)
+    @doctors = current_user.doctors.all
 
     render json: @doctors
   end
@@ -53,7 +53,6 @@ class DoctorsController < OpenReadController
     params.require(:doctor).permit(:name,
                                    :specialty,
                                    :hospital,
-                                   :location,
-                                   :user_id)
+                                   :location)
   end
 end
