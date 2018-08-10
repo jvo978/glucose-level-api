@@ -34,8 +34,15 @@ https://jvo978.github.io/glucose-level-client/
 <li>Verified my schema and doctor controller</li>
 <li>Added attributes to Doctor Serializer</li>
 <li>Made relationship/validation connection between doctor and user inside their models</li>
+<li>Ran bin/rails db:migrate</li>
 <li>Test curlscripts and once successful, focused on the front end.</li>
 </ul>
+
+<h2>Set up/ installation</h2>
+<li>Fork and clone rails api template</li>
+<li>Replace any template name with client name inside a few files</li>
+<li>Created secret base keys for development and test</li>
+<li>Follow heroku guidelines</li>
 
 <h2>Future Iteration/ fixed problems</h2>
 <ul>
