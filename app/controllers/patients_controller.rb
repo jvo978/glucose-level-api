@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PatientsController < OpenReadController
+class PatientsController < ProtectedController
   before_action :set_patient, only: %i[show update destroy]
 
   # GET /patients

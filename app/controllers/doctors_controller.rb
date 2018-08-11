@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class DoctorsController < OpenReadController
-  before_action :set_doctor, only: %i[update destroy]
+class DoctorsController < ProtectedController
+  before_action :set_doctor, only: %i[show update destroy]
 
   # GET /doctors
   def index
@@ -37,7 +37,6 @@ class DoctorsController < OpenReadController
 
   # DELETE /doctors/1
   def destroy
-    @doctor = Doctor.find(params[:id])
     @doctor.destroy
   end
 
@@ -53,6 +52,7 @@ class DoctorsController < OpenReadController
     params.require(:doctor).permit(:name,
                                    :specialty,
                                    :hospital,
-                                   :location)
+                                   :location,
+                                   :user_id)
   end
 end
