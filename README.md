@@ -51,7 +51,7 @@ https://jvo978.github.io/glucose-level-client/
 <li>Future: make relationship between patient and doctor. Then have crud actions also for patient.</li>
 </ul>
 
-<h2>API Routes</h2>
+<h2>API Routes Catalog</h2>
 <ul>
 <li>user/sign-in    **GET</li>
 <li>user/sign-up    **POST</li>
