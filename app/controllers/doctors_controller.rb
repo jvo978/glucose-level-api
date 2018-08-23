@@ -12,7 +12,6 @@ class DoctorsController < ProtectedController
 
   # GET /doctors/1
   def show
-    # @doctor.patients = Patient.all.where(doctor_id: current_user.doctors.find(params[:id]))
     render json: @doctor
   end
 

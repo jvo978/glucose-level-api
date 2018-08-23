@@ -6,5 +6,4 @@ class DoctorSerializer < ActiveModel::Serializer
   def patients
     object.patients.pluck(:id)
   end
-  # has_one :user
 end
