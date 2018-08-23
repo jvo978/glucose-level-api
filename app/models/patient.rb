@@ -2,6 +2,5 @@
 
 class Patient < ApplicationRecord
   belongs_to :doctor
-  validates :name, :age, :weight, :glucose,
-            :test, :date, :doctor_id, presence: true
+  validates :name, :age, :weight, :glucose, :test, presence: true
 end

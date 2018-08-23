@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class DoctorsController < ProtectedController
-  before_action :set_doctor, only: %i[show update destroy]
+  before_action :set_doctor, only: %i[show destroy]
 
   # GET /doctors
   def index
@@ -12,6 +12,7 @@ class DoctorsController < ProtectedController
 
   # GET /doctors/1
   def show
+    # @doctor.patients = Patient.all.where(doctor_id: current_user.doctors.find(params[:id]))
     render json: @doctor
   end
 
@@ -28,6 +29,7 @@ class DoctorsController < ProtectedController
 
   # PATCH/PUT /doctors/1
   def update
+    @doctor = current_user.doctors.find(params[:id])
     if @doctor.update(doctor_params)
       render json: @doctor
     else
@@ -44,7 +46,7 @@ class DoctorsController < ProtectedController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_doctor
-    @doctor = current_user.doctors.find(params[:id])
+    @doctor = Doctor.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.

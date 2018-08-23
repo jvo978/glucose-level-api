@@ -2,5 +2,6 @@
 
 class Doctor < ApplicationRecord
   belongs_to :user
-  validates :name, :specialty, :hospital, :location, :user_id, presence: true
+  has_many :patients, dependent: :destroy
+  validates :name, :specialty, :hospital, :location, :user, presence: true
 end
